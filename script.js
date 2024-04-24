@@ -13,6 +13,13 @@ function getHumanChoice() {
   humanChoice = prompt(
     "Pick Rock, Paper or Scissors....good luck!"
   ).toLocaleLowerCase();
+  if (
+    humanChoice != "rock" &&
+    humanChoice != "paper" &&
+    humanChoice != "scissors"
+  ) {
+    humanChoice = prompt("Must choose either Rock, Paper or Scissors....");
+  }
   return humanChoice;
 }
 
@@ -38,14 +45,23 @@ function playRound(humanChoice, computerChoice) {
   } else {
     console.log("Tie, try again!");
   }
+  console.log(`Player score: ${humanScore}  Computer score: ${computerScore}`);
+}
+
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
+  if (humanScore > computerScore) {
+    console.log("After 5 rounds, player wins!");
+  } else {
+    console.log("After 5 rounds, computer wins!");
+  }
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-console.log(humanSelection, computerSelection);
-console.log(humanScore, computerScore);
+playGame();
