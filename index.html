@@ -3,9 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- <script src="script.js" defer></script> -->
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <script src="script.js"></script>
+    <h1>Rock, Paper, Scissors</h1>
+    <h2>Choose wisely....</h2>
+    <section class="btn-container">
+      <button class="btn rock">Rock</button>
+      <button class="btn paper">Paper</button>
+      <button class="btn scissors">Scissors</button>
+    </section>
+    <section class="results-container">
+      <h3 class="result-head">Round Result</h3>
+      <p class="round-text"></p>
+      <div class="score">
+        <h3>Current Score</h3>
+        <p>Player: <span class="player-score"></span></p>
+        <p>Computer: <span class="computer-score"></span></p>
+        <p class="game-winner"></p>
+      </div>
+    </section>
   </body>
 </html>
