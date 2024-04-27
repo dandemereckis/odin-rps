@@ -4,7 +4,8 @@ const scissors = document.querySelector(".scissors");
 const roundResultText = document.querySelector(".round-text");
 const playerScoreText = document.querySelector(".player-score");
 const computerScoreText = document.querySelector(".computer-score");
-const gameWinnerText = document.querySelector("game-winner");
+const gameWinnerText = document.querySelector(".game-winner");
+const reset = document.querySelector(".reset");
 
 function getComputerChoice() {
   computerChoice = Math.floor(Math.random() * 3 + 1);
@@ -37,6 +38,10 @@ scissors.addEventListener("click", function () {
   playRound(humanChoice, getComputerChoice());
 });
 
+reset.addEventListener("click", function () {
+  resetGame();
+});
+
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
     computerScore++;
@@ -65,19 +70,18 @@ function playRound(humanChoice, computerChoice) {
   } else {
     roundResultText.textContent = "Tie, try again!";
   }
+  if (humanScore === 5) {
+    gameWinnerText.textContent = "Congrats! You were the first to 5 wins!";
+  } else if (computerScore === 5) {
+    gameWinnerText.textContent = "You lose! Computer was the first to 5 wins!";
+  }
 }
 
-// function playGame() {
-//   for (let i = 0; i < 5; i++) {
-//     humanSelection = getHumanChoice();
-//     computerSelection = getComputerChoice();
-//     playRound(humanSelection, computerSelection);
-//   }
-//   if (humanScore > computerScore) {
-//     console.log("After 5 rounds, player wins!");
-//   } else {
-//     console.log("After 5 rounds, computer wins!");
-//   }
-// }
-
-// playGame();
+function resetGame() {
+  humanScore = 0;
+  computerScore = 0;
+  computerScoreText.textContent = computerScore;
+  playerScoreText.textContent = humanScore;
+  gameWinnerText.textContent = "";
+  roundResultText.textContent = "";
+}
