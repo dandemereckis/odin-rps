@@ -72,8 +72,10 @@ function playRound(humanChoice, computerChoice) {
   }
   if (humanScore === 5) {
     gameWinnerText.textContent = "Congrats! You were the first to 5 wins!";
+    disableButton();
   } else if (computerScore === 5) {
     gameWinnerText.textContent = "You lose! Computer was the first to 5 wins!";
+    disableButton();
   }
 }
 
@@ -84,4 +86,17 @@ function resetGame() {
   playerScoreText.textContent = humanScore;
   gameWinnerText.textContent = "";
   roundResultText.textContent = "";
+  enableButton();
+}
+
+function disableButton() {
+  rock.disabled = true;
+  paper.disabled = true;
+  scissors.disabled = true;
+}
+
+function enableButton() {
+  rock.disabled = false;
+  paper.disabled = false;
+  scissors.disabled = false;
 }
